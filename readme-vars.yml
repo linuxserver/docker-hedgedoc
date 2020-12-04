@@ -2,7 +2,7 @@
 
 # project information
 project_name: hedgedoc
-project_url: "https://demo.hedgedoc.org"
+project_url: "https://hedgedoc.org/"
 project_logo: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/hedgedoc-banner.png"
 project_blurb: |
   [HedgeDoc]({{ project_url }}) gives you access to all your files wherever you are.

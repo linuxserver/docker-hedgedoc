@@ -38,12 +38,12 @@ Find us at:
 [![Jenkins Build](https://img.shields.io/jenkins/build?labelColor=555555&logoColor=ffffff&style=for-the-badge&jobUrl=https%3A%2F%2Fci.linuxserver.io%2Fjob%2FDocker-Pipeline-Builders%2Fjob%2Fdocker-hedgedoc%2Fjob%2Fmain%2F&logo=jenkins)](https://ci.linuxserver.io/job/Docker-Pipeline-Builders/job/docker-hedgedoc/job/main/)
 [![LSIO CI](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Fci-tests.linuxserver.io%2Flinuxserver%2Fhedgedoc%2Flatest%2Fci-status.yml)](https://ci-tests.linuxserver.io/linuxserver/hedgedoc/latest/index.html)
 
-[HedgeDoc](https://demo.hedgedoc.org) gives you access to all your files wherever you are.
+[HedgeDoc](https://hedgedoc.org/) gives you access to all your files wherever you are.
 
 HedgeDoc is a real-time, multi-platform collaborative markdown note editor.  This means that you can write notes with other people on your desktop, tablet or even on the phone.  You can sign-in via multiple auth providers like Facebook, Twitter, GitHub and many more on the homepage.
 
 
-[![hedgedoc](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/hedgedoc-banner.png)](https://demo.hedgedoc.org)
+[![hedgedoc](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/hedgedoc-banner.png)](https://hedgedoc.org/)
 
 ## Supported Architectures
 
