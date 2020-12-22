@@ -18,7 +18,7 @@ jobs:
           fi
           echo "**** External trigger running off of main branch. To disable this trigger, set a Github secret named \"PAUSE_EXTERNAL_TRIGGER_HEDGEDOC_MAIN\". ****"
           echo "**** Retrieving external version ****"
-          EXT_RELEASE=$(curl -u "${{ secrets.CR_USER }}:${{ secrets.CR_PAT }}" -sX GET "https://api.github.com/repos/hedgedoc/hedgedoc/releases" | jq -r '.[0] | .tag_name')
+          EXT_RELEASE=$(curl -u "${{ secrets.CR_USER }}:${{ secrets.CR_PAT }}" -sX GET "https://api.github.com/repos/hedgedoc/hedgedoc/releases/latest" | jq -r '. | .tag_name')
           if [ -z "${EXT_RELEASE}" ] || [ "${EXT_RELEASE}" == "null" ]; then
             echo "**** Can't retrieve external version, exiting ****"
             FAILURE_REASON="Can't retrieve external version for hedgedoc branch main"
@@ -27,6 +27,7 @@ jobs:
               "username": "Github Actions"}' ${{ secrets.DISCORD_WEBHOOK }}
             exit 1
           fi
+          EXT_RELEASE=$(echo ${EXT_RELEASE} | sed 's/[~,%@+;:/]//g')
           echo "**** External version: ${EXT_RELEASE} ****"
           echo "**** Retrieving last pushed version ****"
           image="linuxserver/hedgedoc"

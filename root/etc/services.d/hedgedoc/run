@@ -9,7 +9,7 @@
 	export CMD_DB_URL="sqlite:///config/hedgedoc.sqlite"
 # set config path
 [[ -z ${CMD_CONFIG_FILE+x} ]] && \
-        export CMD_CONFIG_FILE="/config/config.json"
+    export CMD_CONFIG_FILE="/config/config.json"
 
 cd /opt/hedgedoc || :
 

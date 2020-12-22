@@ -37,26 +37,20 @@ RUN \
 	netcat-openbsd \
 	nodejs \
 	yarn && \
- echo "***** install phantomjs *****" && \
- curl -o  \
- /tmp/phantom.tar.gz -L \
- 	"https://lsio-ci.ams3.digitaloceanspaces.com/phantomjs/phantomjs-armhf.tar.gz" && \
- tar -xf  /tmp/phantom.tar.gz -C / && \
  echo "**** install hedgedoc ****" && \
  if [ -z ${HEDGEDOC_RELEASE+x} ]; then \
-	HEDGEDOC_RELEASE=$(curl -sX GET "https://api.github.com/repos/hedgedoc/hedgedoc/releases" \
-	| jq -r '.[0] | .tag_name'); \
+	HEDGEDOC_RELEASE=$(curl -sX GET "https://api.github.com/repos/hedgedoc/hedgedoc/releases/latest" \
+	| jq -r '.tag_name'); \
  fi && \
  curl -o \
 	/tmp/hedgedoc.tar.gz -L \
-	"https://github.com/hedgedoc/hedgedoc/archive/${HEDGEDOC_RELEASE}.tar.gz" && \
+	"https://github.com/hedgedoc/hedgedoc/releases/download/${HEDGEDOC_RELEASE}/hedgedoc-${HEDGEDOC_RELEASE}.tar.gz" && \
  mkdir -p \
 	/opt/hedgedoc && \
  tar xf /tmp/hedgedoc.tar.gz -C \
 	/opt/hedgedoc --strip-components=1 && \
  cd /opt/hedgedoc && \
  bin/setup && \
- npm run build && \
  echo "**** cleanup ****" && \
  yarn cache clean && \
  apt-get -y purge \

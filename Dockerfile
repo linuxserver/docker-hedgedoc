@@ -15,10 +15,14 @@ RUN \
  echo "**** install build packages ****" && \
  apt-get update && \
  apt-get install -y \
+	g++ \
+	gcc \
 	git \
 	gnupg \
 	jq \
-	libssl-dev && \
+	libicu60 \
+	libssl-dev \
+	make && \
  echo "**** install runtime *****" && \
  curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
  echo 'deb https://deb.nodesource.com/node_12.x bionic main' > /etc/apt/sources.list.d/nodesource.list && \
@@ -34,26 +38,29 @@ RUN \
 	yarn && \
  echo "**** install hedgedoc ****" && \
  if [ -z ${HEDGEDOC_RELEASE+x} ]; then \
-	HEDGEDOC_RELEASE=$(curl -sX GET "https://api.github.com/repos/hedgedoc/hedgedoc/releases" \
-	| jq -r '.[0] | .tag_name'); \
+	HEDGEDOC_RELEASE=$(curl -sX GET "https://api.github.com/repos/hedgedoc/hedgedoc/releases/latest" \
+	| jq -r '.tag_name'); \
  fi && \
  curl -o \
 	/tmp/hedgedoc.tar.gz -L \
-	"https://github.com/hedgedoc/hedgedoc/archive/${HEDGEDOC_RELEASE}.tar.gz" && \
+	"https://github.com/hedgedoc/hedgedoc/releases/download/${HEDGEDOC_RELEASE}/hedgedoc-${HEDGEDOC_RELEASE}.tar.gz" && \
  mkdir -p \
 	/opt/hedgedoc && \
  tar xf /tmp/hedgedoc.tar.gz -C \
 	/opt/hedgedoc --strip-components=1 && \
  cd /opt/hedgedoc && \
  bin/setup && \
- npm run build && \
  echo "**** cleanup ****" && \
  yarn cache clean && \
  apt-get -y purge \
+	g++ \
+	gcc \
 	git \
 	gnupg \
 	jq \
-	libssl-dev && \
+	libicu60 \
+	libssl-dev \
+	make && \
  apt-get -y autoremove && \
  rm -rf \
 	/tmp/* \
