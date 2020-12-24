@@ -1,0 +1,88 @@
+---
+
+# project information
+project_name: hedgedoc
+project_url: "https://hedgedoc.org/"
+project_logo: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/hedgedoc-banner.png"
+project_blurb: |
+  [HedgeDoc]({{ project_url }}) gives you access to all your files wherever you are.
+
+  HedgeDoc is a real-time, multi-platform collaborative markdown note editor.  This means that you can write notes with other people on your desktop, tablet or even on the phone.  You can sign-in via multiple auth providers like Facebook, Twitter, GitHub and many more on the homepage.
+project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
+
+# supported architectures
+available_architectures:
+  - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
+  - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
+  - { arch: "{{ arch_armhf }}", tag: "arm32v7-latest"}
+
+# container parameters
+common_param_env_vars_enabled: true
+param_container_name: "{{ project_name }}"
+param_usage_include_env: true
+param_env_vars:
+  - { env_var: "DB_HOST", env_value: "<hostname or ip>", desc: "Host address of mysql database" }
+  - { env_var: "DB_PORT", env_value: "3306", desc: "Port to access mysql database default is 3306" }
+  - { env_var: "DB_USER", env_value: "hedgedoc", desc: "Database user" }
+  - { env_var: "DB_PASS", env_value: "<secret password>", desc: "Database password" }
+  - { env_var: "DB_NAME", env_value: "hedgedoc", desc: "Database name" }
+  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
+param_usage_include_vols: true
+param_volumes:
+  - { vol_path: "/config", vol_host_path: "/path/to/appdata", desc: "HedgeDoc config and configurable files" }
+param_usage_include_ports: true
+param_ports:
+  - { external_port: "3000", internal_port: "3000", port_desc: "If you wish to access this container from http://{IP}:${PORT}` this *must* be left unchanged." }
+
+custom_compose: |
+  version: "3"
+  services:
+    mariadb:
+      image: ghcr.io/linuxserver/mariadb:latest
+      container_name: hedgedoc_mariadb
+      restart: always
+      volumes:
+        - path/to/mariadb/data:/config
+      environment:
+        - MYSQL_ROOT_PASSWORD=<secret password>
+        - MYSQL_DATABASE=hedgedoc
+        - MYSQL_USER=hedgedoc
+        - MYSQL_PASSWORD=<secret password>
+        - PGID=1000
+        - PUID=1000
+        - TZ=Europe/London
+    hedgedoc:
+      image: ghcr.io/linuxserver/hedgedoc:latest
+      container_name: hedgedoc
+      restart: always
+      depends_on:
+        - mariadb
+      volumes:
+        - /path/to/config:/config
+      environment:
+        - DB_HOST=mariadb
+        - DB_USER=hedgedoc
+        - DB_PASS=<secret password>
+        - DB_NAME=hedgedoc
+        - DB_PORT=3306
+        - PGID=1000
+        - PUID=1000
+        - TZ=Europe/London
+      ports:
+        - "3000:3000"
+
+
+# application setup block
+app_setup_block_enabled: true
+app_setup_block: |
+  HedgeDoc web interface can be accessed `http://${IP}:3000/`, if you want to use a custom domain or anything besides port 3000 you will need to leverage their env settings for callbacks: (specifically for CMD_DOMAIN and CMD_URL_ADDPORT)
+
+  [Full list of HedgeDoc options](https://github.com/hedgedoc/hedgedoc/blob/master/docs/configuration.md)
+
+  For convience we provide a working example using Mysql as a backend in this document, if you do not wish to use our custom environment values or a Mysql database backend feel free to leverage any of the settings laid out in the link above.
+
+  To run behind a reverse proxy we have a [preconfigured config](https://github.com/linuxserver/reverse-proxy-confs/blob/master/hedgedoc.subdomain.conf.sample) using docker networking included in our [SWAG](https://github.com/linuxserver/docker-swag) image and you can read how to use this in the [Reverse Proxy Confs repository](https://github.com/linuxserver/reverse-proxy-confs/#how-to-use-these-reverse-proxy-configs)
+
+# changelog
+changelogs:
+  - { date: "22.12.20:", desc: "Initial release" }

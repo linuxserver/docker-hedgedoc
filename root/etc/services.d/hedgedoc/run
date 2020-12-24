@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv bash
+
+# if user is using our env variables set the DB_URL
+[[ -n ${DB_HOST+x} ]] && \
+	export CMD_DB_URL="mysql://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
+
+# set env var for sqlite if db url unset
+[[ -z ${CMD_DB_URL+x} ]] && \
+	export CMD_DB_URL="sqlite:///config/hedgedoc.sqlite"
+# set config path
+[[ -z ${CMD_CONFIG_FILE+x} ]] && \
+    export CMD_CONFIG_FILE="/config/config.json"
+
+cd /opt/hedgedoc || :
+
+# run database migrations
+s6-setuidgid abc ./node_modules/sequelize-cli/lib/sequelize db:migrate || exit
+
+# run program
+exec \
+	s6-setuidgid abc node app.js 

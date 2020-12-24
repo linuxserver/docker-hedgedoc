@@ -1,0 +1,3 @@
+{
+  "use_env_variable": "CMD_DB_URL"
+}
