@@ -85,4 +85,5 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "13.01.21:", desc: "Fix permissions on the app folder" }
   - { date: "22.12.20:", desc: "Initial release" }

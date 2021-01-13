@@ -51,7 +51,9 @@ if [ -f "/config/codimd.sqlite" ] && [ ! -f "/config/hedgedoc.sqlite" ]; then
 fi
 
 # permissions
+echo "Fixing permissions on the app and data folders"
 chown -R abc:abc \
+	/opt/hedgedoc \
 	/config
 
 # set lockfile to avoid DB waits for this specific container

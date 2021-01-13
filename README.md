@@ -258,4 +258,5 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **13.01.21:** - Fix permissions on the app folder
 * **22.12.20:** - Initial release
