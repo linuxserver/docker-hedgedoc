@@ -261,4 +261,5 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **03.05.21:** - Remove deprecated sequalizerc step.
 * **22.12.20:** - Initial release
