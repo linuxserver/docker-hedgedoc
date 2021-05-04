@@ -85,4 +85,5 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "03.05.21:", desc: "Remove deprecated sequalizerc step." }
   - { date: "22.12.20:", desc: "Initial release" }
