@@ -4,26 +4,6 @@
 [[ ! -f /config/config.json ]] && \
     cp /defaults/config.json /config/config.json
 
-
-# create symlinks
-symlinks=( \
-/opt/hedgedoc/public/docs \
-/opt/hedgedoc/public/uploads \
-/opt/hedgedoc/public/views \
-/opt/hedgedoc/public/default.md 
-)
-for i in "${symlinks[@]}"; do
-    # if config file is present just remove container one and symlink
-    [[ -e "$i" && ! -L "$i" && -e /config/"$(basename "$i")" ]] && \
-        rm -Rf "$i" && \
-        ln -s /config/"$(basename "$i")" "$i"
-    # if config file is not present move it before symlinking
-    [[ -e "$i" && ! -L "$i" ]] && \
-        mv "$i" /config/"$(basename "$i")" && \
-        ln -s /config/"$(basename "$i")" "$i"
-done
-
-
 # check for the mysql endpoint for 30 seconds if user is using our env vars
 if [ -n "${DB_HOST+x}" ]; then
     END=$((SECONDS+30))
