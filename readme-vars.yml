@@ -27,6 +27,10 @@ param_env_vars:
   - { env_var: "DB_PASS", env_value: "<secret password>", desc: "Database password" }
   - { env_var: "DB_NAME", env_value: "hedgedoc", desc: "Database name" }
   - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
+  - { env_var: "CMD_DOMAIN", env_value: "localhost", desc: "The address the gui will be accessed at (ie. `192.168.1.1` or `hedgedoc.domain.com`)." }
+opt_param_usage_include_env: true
+opt_param_env_vars:
+  - { env_var: "CMD_URL_ADDPORT", env_value: "true", desc: "Set to `false` if accessing at port `80` or `443`." }
 param_usage_include_vols: true
 param_volumes:
   - { vol_path: "/config", vol_host_path: "/path/to/appdata", desc: "HedgeDoc config and configurable files" }
@@ -42,7 +46,7 @@ custom_compose: |
       container_name: hedgedoc_mariadb
       restart: always
       volumes:
-        - path/to/mariadb/data:/config
+        - /path/to/mariadb/data:/config
       environment:
         - MYSQL_ROOT_PASSWORD=<secret password>
         - MYSQL_DATABASE=hedgedoc
@@ -68,6 +72,8 @@ custom_compose: |
         - PGID=1000
         - PUID=1000
         - TZ=Europe/London
+        - CMD_DOMAIN=localhost
+        - CMD_URL_ADDPORT=true #optional
       ports:
         - "3000:3000"
 
@@ -85,6 +91,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "15.10.21:", desc: "Add required env var `CMD_DOMAIN`." }
   - { date: "05.05.21:", desc: "Remove symlinking some folders from config to /opt/hedgedoc/public." }
   - { date: "03.05.21:", desc: "Remove deprecated sequalizerc step." }
   - { date: "22.12.20:", desc: "Initial release" }

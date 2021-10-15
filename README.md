@@ -79,11 +79,11 @@ Here are some example snippets to help you get started creating a container.
 version: "3"
 services:
   mariadb:
-    image: ghcr.io/linuxserver/mariadb:latest
+    image: lscr.io/linuxserver/mariadb:latest
     container_name: hedgedoc_mariadb
     restart: always
     volumes:
-      - path/to/mariadb/data:/config
+      - /path/to/mariadb/data:/config
     environment:
       - MYSQL_ROOT_PASSWORD=<secret password>
       - MYSQL_DATABASE=hedgedoc
@@ -93,7 +93,7 @@ services:
       - PUID=1000
       - TZ=Europe/London
   hedgedoc:
-    image: ghcr.io/linuxserver/hedgedoc:latest
+    image: lscr.io/linuxserver/hedgedoc:latest
     container_name: hedgedoc
     restart: always
     depends_on:
@@ -109,6 +109,8 @@ services:
       - PGID=1000
       - PUID=1000
       - TZ=Europe/London
+      - CMD_DOMAIN=localhost
+      - CMD_URL_ADDPORT=true #optional
     ports:
       - "3000:3000"
 
@@ -127,6 +129,8 @@ docker run -d \
   -e DB_PASS=<secret password> \
   -e DB_NAME=hedgedoc \
   -e TZ=Europe/London \
+  -e CMD_DOMAIN=localhost \
+  -e CMD_URL_ADDPORT=true `#optional` \
   -p 3000:3000 \
   -v /path/to/appdata:/config \
   --restart unless-stopped \
@@ -148,6 +152,8 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e DB_PASS=<secret password>` | Database password |
 | `-e DB_NAME=hedgedoc` | Database name |
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
+| `-e CMD_DOMAIN=localhost` | The address the gui will be accessed at (ie. `192.168.1.1` or `hedgedoc.domain.com`). |
+| `-e CMD_URL_ADDPORT=true` | Set to `false` if accessing at port `80` or `443`. |
 | `-v /config` | HedgeDoc config and configurable files |
 
 ## Environment variables from files (Docker secrets)
@@ -259,6 +265,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **15.10.21:** - Add required env var `CMD_DOMAIN`.
 * **05.05.21:** - Remove symlinking some folders from config to /opt/hedgedoc/public.
 * **03.05.21:** - Remove deprecated sequalizerc step.
 * **22.12.20:** - Initial release
