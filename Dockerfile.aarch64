@@ -12,6 +12,9 @@ LABEL maintainer="chbmb"
 ARG DEBIAN_FRONTEND="noninteractive"
 ENV NODE_ENV production
 
+# npm sqlite3 5.0.2 doesn't build with python3: https://github.com/mapbox/node-sqlite3/pull/1441
+ARG PYTHON="/usr/bin/python2"
+
 RUN \
   echo "**** install build packages ****" && \
   apt-get update && \
@@ -23,7 +26,8 @@ RUN \
     jq \
     libicu66 \
     libssl-dev \
-    make && \
+    make \
+    python2 && \
   echo "**** install runtime *****" && \
   curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
   echo 'deb https://deb.nodesource.com/node_16.x focal main' > /etc/apt/sources.list.d/nodesource.list && \
@@ -50,6 +54,8 @@ RUN \
   tar xf /tmp/hedgedoc.tar.gz -C \
     /opt/hedgedoc --strip-components=1 && \
   cd /opt/hedgedoc && \
+  rm -rf /usr/bin/python && \
+  ln -s /usr/bin/python2 /usr/bin/python && \
   bin/setup && \
   echo "**** cleanup ****" && \
   yarn cache clean && \
@@ -61,7 +67,8 @@ RUN \
     jq \
     libicu66 \
     libssl-dev \
-    make && \
+    make \
+    python2 && \
   apt-get -y autoremove && \
   rm -rf \
     /tmp/* \
