@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-ubuntu:arm32v7-bionic
+FROM ghcr.io/linuxserver/baseimage-ubuntu:arm32v7-focal
 
 
 # set version label
@@ -21,12 +21,12 @@ RUN \
     git \
     gnupg \
     jq \
-    libicu60 \
+    libicu66 \
     libssl-dev \
     make && \
   echo "**** install runtime *****" && \
   curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
-  echo 'deb https://deb.nodesource.com/node_12.x bionic main' > /etc/apt/sources.list.d/nodesource.list && \
+  echo 'deb https://deb.nodesource.com/node_16.x focal main' > /etc/apt/sources.list.d/nodesource.list && \
   echo "**** install yarn repository ****" && \
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list && \
@@ -59,7 +59,7 @@ RUN \
     git \
     gnupg \
     jq \
-    libicu60 \
+    libicu66 \
     libssl-dev \
     make && \
   apt-get -y autoremove && \

@@ -265,6 +265,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **07.12.21:** - Rebase to ubuntu focal. Update to node 16. Make sure uploads are persistent.
 * **15.10.21:** - Add required env var `CMD_DOMAIN`.
 * **05.05.21:** - Remove symlinking some folders from config to /opt/hedgedoc/public.
 * **03.05.21:** - Remove deprecated sequalizerc step.
