@@ -131,6 +131,7 @@ docker run -d \
   -e TZ=Europe/London \
   -e CMD_DOMAIN=localhost \
   -e CMD_URL_ADDPORT=true `#optional` \
+  -e CMD_PROTOCOL_USESSL=false `#optional` \
   -p 3000:3000 \
   -v /path/to/appdata:/config \
   --restart unless-stopped \
@@ -154,6 +155,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
 | `-e CMD_DOMAIN=localhost` | The address the gui will be accessed at (ie. `192.168.1.1` or `hedgedoc.domain.com`). |
 | `-e CMD_URL_ADDPORT=true` | Set to `false` if accessing at port `80` or `443`. |
+| `-e CMD_PROTOCOL_USESSL=false` | Set to `true` if accessing over https via reverse proxy. |
 | `-v /config` | HedgeDoc config and configurable files |
 
 ## Environment variables from files (Docker secrets)
@@ -265,6 +267,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **09.12.21:** - Add optional var `CMD_PROTOCOL_USESSL` that is needed for reverse proxy.
 * **07.12.21:** - Rebase to ubuntu focal. Update to node 16. Make sure uploads are persistent.
 * **15.10.21:** - Add required env var `CMD_DOMAIN`.
 * **05.05.21:** - Remove symlinking some folders from config to /opt/hedgedoc/public.

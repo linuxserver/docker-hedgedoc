@@ -31,6 +31,7 @@ param_env_vars:
 opt_param_usage_include_env: true
 opt_param_env_vars:
   - { env_var: "CMD_URL_ADDPORT", env_value: "true", desc: "Set to `false` if accessing at port `80` or `443`." }
+  - { env_var: "CMD_PROTOCOL_USESSL", env_value: "false", desc: "Set to `true` if accessing over https via reverse proxy." }
 param_usage_include_vols: true
 param_volumes:
   - { vol_path: "/config", vol_host_path: "/path/to/appdata", desc: "HedgeDoc config and configurable files" }
@@ -91,6 +92,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "09.12.21:", desc: "Add optional var `CMD_PROTOCOL_USESSL` that is needed for reverse proxy." }
   - { date: "07.12.21:", desc: "Rebase to ubuntu focal. Update to node 16. Make sure uploads are persistent." }
   - { date: "15.10.21:", desc: "Add required env var `CMD_DOMAIN`." }
   - { date: "05.05.21:", desc: "Remove symlinking some folders from config to /opt/hedgedoc/public." }
