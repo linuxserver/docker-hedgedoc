@@ -62,7 +62,7 @@ The architectures supported by this image are:
 
 ## Application Setup
 
-HedgeDoc web interface can be accessed `http://${IP}:3000/`, if you want to use a custom domain or anything besides port 3000 you will need to leverage their env settings for callbacks: (specifically for CMD_DOMAIN and CMD_URL_ADDPORT)
+HedgeDoc web interface can be accessed `http://${IP}:3000/`, if you want to use a custom domain or anything besides port 3000 you will need to leverage their env settings for callbacks: (specifically for CMD_DOMAIN, CMD_PORT and CMD_URL_ADDPORT)
 
 [Full list of HedgeDoc options](https://docs.hedgedoc.org/configuration/)
 
@@ -112,6 +112,8 @@ services:
       - TZ=Europe/London
       - CMD_DOMAIN=localhost
       - CMD_URL_ADDPORT=true #optional
+      - CMD_PROTOCOL_USESSL=false #optional
+      - CMD_PORT=3000 #optional
     ports:
       - "3000:3000"
 
@@ -133,6 +135,7 @@ docker run -d \
   -e CMD_DOMAIN=localhost \
   -e CMD_URL_ADDPORT=true `#optional` \
   -e CMD_PROTOCOL_USESSL=false `#optional` \
+  -e CMD_PORT=3000 `#optional` \
   -p 3000:3000 \
   -v /path/to/appdata:/config \
   --restart unless-stopped \
@@ -145,7 +148,7 @@ Container images are configured using parameters passed at runtime (such as thos
 
 | Parameter | Function |
 | :----: | --- |
-| `-p 3000` | If you wish to access this container from http://{IP}:${PORT}` this *must* be left unchanged. |
+| `-p 3000` | Web gui port (internal port also needs to be changed if accessing at port other than 80, 443 and 3000). |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e DB_HOST=<hostname or ip>` | Host address of mysql database |
@@ -157,6 +160,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e CMD_DOMAIN=localhost` | The address the gui will be accessed at (ie. `192.168.1.1` or `hedgedoc.domain.com`). |
 | `-e CMD_URL_ADDPORT=true` | Set to `false` if accessing at port `80` or `443`. |
 | `-e CMD_PROTOCOL_USESSL=false` | Set to `true` if accessing over https via reverse proxy. |
+| `-e CMD_PORT=3000` | If you wish to access hedgedoc at a port different than 80, 443 or 3000, you need to set this to that port (ie. `CMD_PORT=5000`) and change the port mapping accordingly (5000:5000). |
 | `-v /config` | HedgeDoc config and configurable files |
 
 ## Environment variables from files (Docker secrets)
@@ -268,6 +272,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **09.02.22:** - Add optional var `CMD_PORT` that is needed for accessing at port other than 80, 443 and 3000.
 * **09.12.21:** - Add optional var `CMD_PROTOCOL_USESSL` that is needed for reverse proxy.
 * **07.12.21:** - Rebase to ubuntu focal. Update to node 16. Make sure uploads are persistent.
 * **15.10.21:** - Add required env var `CMD_DOMAIN`.
