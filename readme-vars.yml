@@ -32,12 +32,13 @@ opt_param_usage_include_env: true
 opt_param_env_vars:
   - { env_var: "CMD_URL_ADDPORT", env_value: "true", desc: "Set to `false` if accessing at port `80` or `443`." }
   - { env_var: "CMD_PROTOCOL_USESSL", env_value: "false", desc: "Set to `true` if accessing over https via reverse proxy." }
+  - { env_var: "CMD_PORT", env_value: "3000", desc: "If you wish to access hedgedoc at a port different than 80, 443 or 3000, you need to set this to that port (ie. `CMD_PORT=5000`) and change the port mapping accordingly (5000:5000)." }
 param_usage_include_vols: true
 param_volumes:
   - { vol_path: "/config", vol_host_path: "/path/to/appdata", desc: "HedgeDoc config and configurable files" }
 param_usage_include_ports: true
 param_ports:
-  - { external_port: "3000", internal_port: "3000", port_desc: "If you wish to access this container from http://{IP}:${PORT}` this *must* be left unchanged." }
+  - { external_port: "3000", internal_port: "3000", port_desc: "Web gui port (internal port also needs to be changed if accessing at port other than 80, 443 and 3000)." }
 
 custom_compose: |
   version: "3"
@@ -75,6 +76,8 @@ custom_compose: |
         - TZ=Europe/London
         - CMD_DOMAIN=localhost
         - CMD_URL_ADDPORT=true #optional
+        - CMD_PROTOCOL_USESSL=false #optional
+        - CMD_PORT=3000 #optional
       ports:
         - "3000:3000"
 
@@ -82,7 +85,7 @@ custom_compose: |
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
-  HedgeDoc web interface can be accessed `http://${IP}:3000/`, if you want to use a custom domain or anything besides port 3000 you will need to leverage their env settings for callbacks: (specifically for CMD_DOMAIN and CMD_URL_ADDPORT)
+  HedgeDoc web interface can be accessed `http://${IP}:3000/`, if you want to use a custom domain or anything besides port 3000 you will need to leverage their env settings for callbacks: (specifically for CMD_DOMAIN, CMD_PORT and CMD_URL_ADDPORT)
 
   [Full list of HedgeDoc options](https://docs.hedgedoc.org/configuration/)
 
@@ -92,6 +95,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "09.02.22:", desc: "Add optional var `CMD_PORT` that is needed for accessing at port other than 80, 443 and 3000." }
   - { date: "09.12.21:", desc: "Add optional var `CMD_PROTOCOL_USESSL` that is needed for reverse proxy." }
   - { date: "07.12.21:", desc: "Rebase to ubuntu focal. Update to node 16. Make sure uploads are persistent." }
   - { date: "15.10.21:", desc: "Add required env var `CMD_DOMAIN`." }
