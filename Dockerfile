@@ -29,6 +29,7 @@ RUN \
     netcat-openbsd \
     nodejs \
     yarn && \
+  ln -s /usr/bin/python3 /usr/bin/python && \    
   echo "**** install hedgedoc ****" && \
   if [ -z ${HEDGEDOC_RELEASE+x} ]; then \
     HEDGEDOC_RELEASE=$(curl -sX GET "https://api.github.com/repos/hedgedoc/hedgedoc/releases/latest" \
