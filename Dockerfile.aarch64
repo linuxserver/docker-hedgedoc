@@ -13,13 +13,15 @@ ENV NODE_ENV production
 RUN \
   echo "**** install build packages ****" && \
   apk add -U --update --no-cache --virtual=build-dependencies \
+    build-base \
     g++ \
     gcc \
     git \
     jq \
     icu-libs \
     openssl-dev \
-    build-base && \
+    python3-dev \
+    sqlite-dev && \
   apk add -U --update --no-cache \
     curl \
     fontconfig \
