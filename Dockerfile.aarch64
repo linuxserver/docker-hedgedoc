@@ -19,6 +19,7 @@ RUN \
     git \
     jq \
     icu-libs \
+    npm \
     openssl-dev \
     python3-dev \
     sqlite-dev && \
@@ -29,7 +30,7 @@ RUN \
     netcat-openbsd \
     nodejs \
     yarn && \
-  ln -s /usr/bin/python3 /usr/bin/python && \
+  npm install https://github.com/mapbox/node-sqlite3/tarball/master && \
   echo "**** install hedgedoc ****" && \
   if [ -z ${HEDGEDOC_RELEASE+x} ]; then \
     HEDGEDOC_RELEASE=$(curl -sX GET "https://api.github.com/repos/hedgedoc/hedgedoc/releases/latest" \
