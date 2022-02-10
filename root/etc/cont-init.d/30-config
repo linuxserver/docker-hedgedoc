@@ -6,8 +6,8 @@
 
 # symlink uploads
 mkdir -p /config/uploads
-rm -rf /opt/hedgedoc/public/uploads
-ln -s /config/uploads /opt/hedgedoc/public/uploads
+rm -rf /app/hedgedoc/public/uploads
+ln -s /config/uploads /app/hedgedoc/public/uploads
 
 # check for the mysql endpoint for 30 seconds if user is using our env vars
 if [ -n "${DB_HOST+x}" ]; then
