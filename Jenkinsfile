@@ -27,7 +27,7 @@ pipeline {
     DOCKERHUB_IMAGE = 'linuxserver/hedgedoc'
     DEV_DOCKERHUB_IMAGE = 'lsiodev/hedgedoc'
     PR_DOCKERHUB_IMAGE = 'lspipepr/hedgedoc'
-    DIST_IMAGE = 'ubuntu'
+    DIST_IMAGE = 'alpine'
     MULTIARCH='true'
     CI='true'
     CI_WEB='true'

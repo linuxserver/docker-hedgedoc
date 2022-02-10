@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-ubuntu:focal
+FROM ghcr.io/linuxserver/baseimage-alpine:3.15
 
 # set version label
 ARG BUILD_DATE
@@ -8,31 +8,24 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 LABEL maintainer="chbmb"
 
 # environment settings
-ARG DEBIAN_FRONTEND="noninteractive"
 ENV NODE_ENV production
 
 RUN \
   echo "**** install build packages ****" && \
-  apt-get update && \
-  apt-get install -y \
+  apk add -U --update --no-cache --virtual=build-dependencies \
+    build-base \
     g++ \
     gcc \
     git \
-    gnupg \
     jq \
-    libicu66 \
-    libssl-dev \
-    make && \
-  echo "**** install runtime *****" && \
-  curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
-  echo 'deb https://deb.nodesource.com/node_16.x focal main' > /etc/apt/sources.list.d/nodesource.list && \
-  echo "**** install yarn repository ****" && \
-  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-  echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list && \
-  apt-get update && \
-  apt-get install -y \
+    icu-libs \
+    openssl-dev \
+    python2-dev \
+    sqlite-dev && \
+  apk add -U --update --no-cache \
+    curl \
     fontconfig \
-    fonts-noto \
+    font-noto \
     netcat-openbsd \
     nodejs \
     yarn && \
@@ -45,27 +38,17 @@ RUN \
     /tmp/hedgedoc.tar.gz -L \
     "https://github.com/hedgedoc/hedgedoc/releases/download/${HEDGEDOC_RELEASE}/hedgedoc-${HEDGEDOC_RELEASE}.tar.gz" && \
   mkdir -p \
-    /opt/hedgedoc && \
+    /app/hedgedoc && \
   tar xf /tmp/hedgedoc.tar.gz -C \
-    /opt/hedgedoc --strip-components=1 && \
-  cd /opt/hedgedoc && \
+    /app/hedgedoc --strip-components=1 && \
+  cd /app/hedgedoc && \
   bin/setup && \
   echo "**** cleanup ****" && \
   yarn cache clean && \
-  apt-get -y purge \
-    g++ \
-    gcc \
-    git \
-    gnupg \
-    jq \
-    libicu66 \
-    libssl-dev \
-    make && \
-  apt-get -y autoremove && \
+  apk del --purge \
+    build-dependencies && \
   rm -rf \
-    /tmp/* \
-    /var/lib/apt/lists/* \
-    /var/tmp/*
+    /tmp/* 
 
 # add local files
 COPY root/ / 

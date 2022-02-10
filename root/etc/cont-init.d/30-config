@@ -6,15 +6,15 @@
 
 # symlink uploads
 mkdir -p /config/uploads
-rm -rf /opt/hedgedoc/public/uploads
-ln -s /config/uploads /opt/hedgedoc/public/uploads
+rm -rf /app/hedgedoc/public/uploads
+ln -s /config/uploads /app/hedgedoc/public/uploads
 
 # check for the mysql endpoint for 30 seconds if user is using our env vars
 if [ -n "${DB_HOST+x}" ]; then
     END=$((SECONDS+30))
     while [ ${SECONDS} -lt ${END} ]; do
-        if /bin/nc -w1 ${DB_HOST} ${DB_PORT} > /dev/null 2>&1; then
-            [ ! -z "${RUN}" ] && break
+        if /bin/nc -w1 "${DB_HOST}" "${DB_PORT}" > /dev/null 2>&1; then
+            [ -n "${RUN}" ] && break
             RUN="RAN"
             # we sleep here again due to first run init on DB containers
             [ ! -f /dbwait.lock ] && sleep 5

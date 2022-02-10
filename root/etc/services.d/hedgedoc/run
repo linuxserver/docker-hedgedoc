@@ -11,7 +11,7 @@
 [[ -z ${CMD_CONFIG_FILE+x} ]] && \
     export CMD_CONFIG_FILE="/config/config.json"
 
-cd /opt/hedgedoc || :
+cd /app/hedgedoc || :
 
 # run program
 exec \
