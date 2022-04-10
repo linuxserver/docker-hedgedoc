@@ -20,7 +20,7 @@ RUN \
     jq \
     icu-libs \
     openssl-dev \
-    python2-dev \
+    python3-dev \
     sqlite-dev && \
   apk add -U --update --no-cache \
     curl \
