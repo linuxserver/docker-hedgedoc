@@ -12,16 +12,6 @@ ENV NODE_ENV production
 
 RUN \
   echo "**** install build packages ****" && \
-  apk add -U --update --no-cache --virtual=build-dependencies \
-    build-base \
-    g++ \
-    gcc \
-    git \
-    jq \
-    icu-libs \
-    openssl-dev \
-    python3-dev \
-    sqlite-dev && \
   apk add -U --update --no-cache \
     curl \
     fontconfig \
@@ -29,6 +19,17 @@ RUN \
     netcat-openbsd \
     nodejs \
     yarn && \
+  apk add -U --update --no-cache --virtual=build-dependencies \
+    build-base \
+    g++ \
+    gcc \
+    git \
+    jq \
+    icu-libs \
+    npm \
+    openssl-dev \
+    python3-dev \
+    sqlite-dev && \
   echo "**** install hedgedoc ****" && \
   if [ -z ${HEDGEDOC_RELEASE+x} ]; then \
     HEDGEDOC_RELEASE=$(curl -sX GET "https://api.github.com/repos/hedgedoc/hedgedoc/releases/latest" \
