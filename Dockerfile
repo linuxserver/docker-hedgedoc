@@ -9,6 +9,7 @@ LABEL maintainer="chbmb"
 
 # environment settings
 ENV NODE_ENV production
+ENV PUPPETEER_SKIP_DOWNLOAD true
 
 RUN \
   echo "**** install build packages ****" && \
