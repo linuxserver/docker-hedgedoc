@@ -17,8 +17,7 @@ RUN \
     fontconfig \
     font-noto \
     netcat-openbsd \
-    nodejs \
-    yarn && \
+    nodejs && \
   apk add -U --update --no-cache --virtual=build-dependencies \
     build-base \
     g++ \
@@ -29,7 +28,8 @@ RUN \
     npm \
     openssl-dev \
     python3-dev \    
-    sqlite-dev && \
+    sqlite-dev \
+    yarn && \
   echo "**** install hedgedoc ****" && \
   if [ -z ${HEDGEDOC_RELEASE+x} ]; then \
     HEDGEDOC_RELEASE=$(curl -sX GET "https://api.github.com/repos/hedgedoc/hedgedoc/releases/latest" \
