@@ -10,22 +10,24 @@ rm -rf /app/hedgedoc/public/uploads
 ln -s /config/uploads /app/hedgedoc/public/uploads
 
 # check for the mysql endpoint
-echo "Waiting for DB to be available"
-END=$((SECONDS+30))
-while [[ ${SECONDS} -lt ${END} ]] && [[ -n "${DB_HOST+x}" ]]; do
-    if [[ $(/usr/bin/nc -w1 "${DB_HOST}" 3306 | tr -d '\0') ]]; then
-        if [[ -n "${RUN}" ]]; then
-            break
+if [[ -n "${DB_HOST+x}" ]]; then
+    echo "Waiting for DB to be available"
+    END=$((SECONDS+30))
+    while [[ ${SECONDS} -lt ${END} ]] && [[ -n "${DB_HOST+x}" ]]; do
+        if [[ $(/usr/bin/nc -w1 "${DB_HOST}" 3306 | tr -d '\0') ]]; then
+            if [[ -n "${RUN}" ]]; then
+                break
+            fi
+            RUN="RAN"
+            # we sleep here again due to first run init on DB containers
+            if [[ ! -f /dbwait.lock ]]; then
+                sleep 5
+            fi
+        else
+            sleep 1
         fi
-        RUN="RAN"
-        # we sleep here again due to first run init on DB containers
-        if [[ ! -f /dbwait.lock ]]; then
-            sleep 5
-        fi
-    else
-        sleep 1
-    fi
-done
+    done
+fi
 
 # migration from codimd
 if [ -f "/config/codimd.sqlite" ] && [ ! -f "/config/hedgedoc.sqlite" ]; then
