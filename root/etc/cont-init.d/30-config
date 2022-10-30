@@ -14,7 +14,7 @@ if [[ -n "${DB_HOST+x}" ]]; then
     echo "Waiting for DB to be available"
     END=$((SECONDS+30))
     while [[ ${SECONDS} -lt ${END} ]] && [[ -n "${DB_HOST+x}" ]]; do
-        if [[ $(/usr/bin/nc -w1 "${DB_HOST}" 3306 | tr -d '\0') ]]; then
+        if [[ $(/usr/bin/nc -w1 "${DB_HOST}" "${DB_PORT:-3306}" | tr -d '\0') ]]; then
             if [[ -n "${RUN}" ]]; then
                 break
             fi
