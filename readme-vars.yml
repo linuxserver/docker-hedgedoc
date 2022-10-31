@@ -30,7 +30,7 @@ param_env_vars:
   - { env_var: "CMD_DOMAIN", env_value: "localhost", desc: "The address the gui will be accessed at (ie. `192.168.1.1` or `hedgedoc.domain.com`)." }
 opt_param_usage_include_env: true
 opt_param_env_vars:
-  - { env_var: "CMD_URL_ADDPORT", env_value: "true", desc: "Set to `false` if accessing at port `80` or `443`." }
+  - { env_var: "CMD_URL_ADDPORT", env_value: "false", desc: "Set to `true` if using a port other than `80` or `443`." }
   - { env_var: "CMD_PROTOCOL_USESSL", env_value: "false", desc: "Set to `true` if accessing over https via reverse proxy." }
   - { env_var: "CMD_PORT", env_value: "3000", desc: "If you wish to access hedgedoc at a port different than 80, 443 or 3000, you need to set this to that port (ie. `CMD_PORT=5000`) and change the port mapping accordingly (5000:5000)." }
 param_usage_include_vols: true
@@ -39,48 +39,6 @@ param_volumes:
 param_usage_include_ports: true
 param_ports:
   - { external_port: "3000", internal_port: "3000", port_desc: "Web gui port (internal port also needs to be changed if accessing at port other than 80, 443 and 3000)." }
-
-custom_compose: |
-  version: "3"
-  services:
-    mariadb:
-      image: lscr.io/linuxserver/mariadb:latest
-      container_name: hedgedoc_mariadb
-      restart: always
-      volumes:
-        - /path/to/mariadb/data:/config
-      environment:
-        - MYSQL_ROOT_PASSWORD=<secret password>
-        - MYSQL_DATABASE=hedgedoc
-        - MYSQL_USER=hedgedoc
-        - MYSQL_PASSWORD=<secret password>
-        - PGID=1000
-        - PUID=1000
-        - TZ=Europe/London
-    hedgedoc:
-      image: lscr.io/linuxserver/hedgedoc:latest
-      container_name: hedgedoc
-      restart: always
-      depends_on:
-        - mariadb
-      volumes:
-        - /path/to/config:/config
-      environment:
-        - DB_HOST=mariadb
-        - DB_USER=hedgedoc
-        - DB_PASS=<secret password>
-        - DB_NAME=hedgedoc
-        - DB_PORT=3306
-        - PGID=1000
-        - PUID=1000
-        - TZ=Europe/London
-        - CMD_DOMAIN=localhost
-        - CMD_URL_ADDPORT=true #optional
-        - CMD_PROTOCOL_USESSL=false #optional
-        - CMD_PORT=3000 #optional
-      ports:
-        - "3000:3000"
-
 
 # application setup block
 app_setup_block_enabled: true

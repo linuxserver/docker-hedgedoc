@@ -9,20 +9,23 @@ mkdir -p /config/uploads
 rm -rf /app/hedgedoc/public/uploads
 ln -s /config/uploads /app/hedgedoc/public/uploads
 
-# check for the mysql endpoint for 30 seconds if user is using our env vars
-if [ -n "${DB_HOST+x}" ]; then
+# check for the mysql endpoint
+if [[ -n "${DB_HOST+x}" ]]; then
+    echo "Waiting for DB to be available"
     END=$((SECONDS+30))
-    while [ ${SECONDS} -lt ${END} ]; do
-        if /bin/nc -w1 "${DB_HOST}" "${DB_PORT}" > /dev/null 2>&1; then
-            [ -n "${RUN}" ] && break
+    while [[ ${SECONDS} -lt ${END} ]] && [[ -n "${DB_HOST+x}" ]]; do
+        if [[ $(/usr/bin/nc -w1 "${DB_HOST}" "${DB_PORT:-3306}" | tr -d '\0') ]]; then
+            if [[ -n "${RUN}" ]]; then
+                break
+            fi
             RUN="RAN"
             # we sleep here again due to first run init on DB containers
-            [ ! -f /dbwait.lock ] && sleep 5
+            if [[ ! -f /dbwait.lock ]]; then
+                sleep 5
+            fi
         else
-            echo "Waiting for Mysql service"
             sleep 1
         fi
-        sleep 1
     done
 fi
 

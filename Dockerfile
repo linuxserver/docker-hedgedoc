@@ -9,9 +9,16 @@ LABEL maintainer="chbmb"
 
 # environment settings
 ENV NODE_ENV production
+ENV PUPPETEER_SKIP_DOWNLOAD true
 
 RUN \
   echo "**** install build packages ****" && \
+  apk add -U --update --no-cache \
+    curl \
+    fontconfig \
+    font-noto \
+    netcat-openbsd \
+    nodejs && \
   apk add -U --update --no-cache --virtual=build-dependencies \
     build-base \
     g++ \
@@ -19,15 +26,10 @@ RUN \
     git \
     jq \
     icu-libs \
+    npm \
     openssl-dev \
     python3-dev \
-    sqlite-dev && \
-  apk add -U --update --no-cache \
-    curl \
-    fontconfig \
-    font-noto \
-    netcat-openbsd \
-    nodejs \
+    sqlite-dev \
     yarn && \
   echo "**** install hedgedoc ****" && \
   if [ -z ${HEDGEDOC_RELEASE+x} ]; then \
