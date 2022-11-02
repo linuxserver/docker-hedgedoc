@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-alpine:3.15
+FROM ghcr.io/linuxserver/baseimage-alpine:3.16
 
 # set version label
 ARG BUILD_DATE
@@ -14,7 +14,6 @@ ENV PUPPETEER_SKIP_DOWNLOAD true
 RUN \
   echo "**** install build packages ****" && \
   apk add -U --update --no-cache \
-    curl \
     fontconfig \
     font-noto \
     netcat-openbsd \
@@ -24,7 +23,6 @@ RUN \
     g++ \
     gcc \
     git \
-    jq \
     icu-libs \
     npm \
     openssl-dev \
