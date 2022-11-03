@@ -1,8 +1,9 @@
 #!/usr/bin/with-contenv bash
 
 # copy config.json if doesn't exist
-[[ ! -f /config/config.json ]] && \
+if [[ ! -f /config/config.json ]]; then
     cp /defaults/config.json /config/config.json
+fi
 
 # symlink uploads
 mkdir -p /config/uploads
@@ -30,7 +31,7 @@ if [[ -n "${DB_HOST+x}" ]]; then
 fi
 
 # migration from codimd
-if [ -f "/config/codimd.sqlite" ] && [ ! -f "/config/hedgedoc.sqlite" ]; then
+if [[ -f "/config/codimd.sqlite" ]] && [[ ! -f "/config/hedgedoc.sqlite" ]]; then
     echo "Migrating codimd sqlite db to hedgedoc"
     mv /config/codimd.sqlite /config/hedgedoc.sqlite
 fi
