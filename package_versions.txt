@@ -42,7 +42,7 @@ ncurses-libs-6.3_p20220521-r0
 ncurses-terminfo-base-6.3_p20220521-r0
 netcat-openbsd-1.130-r3
 nghttp2-libs-1.47.0-r0
-nodejs-16.17.1-r0
+nodejs-16.19.1-r0
 oniguruma-6.9.8-r0
 procps-3.3.17-r1
 readline-8.1.2-r0
