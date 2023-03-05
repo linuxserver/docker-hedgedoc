@@ -1,4 +1,6 @@
-FROM ghcr.io/linuxserver/baseimage-alpine:3.16
+# syntax=docker/dockerfile:1
+
+FROM ghcr.io/linuxserver/baseimage-alpine:3.17
 
 # set version label
 ARG BUILD_DATE
@@ -16,14 +18,10 @@ RUN \
   apk add -U --update --no-cache \
     fontconfig \
     font-noto \
-    netcat-openbsd \
+    icu-libs \
     nodejs && \
   apk add -U --update --no-cache --virtual=build-dependencies \
     build-base \
-    g++ \
-    gcc \
-    git \
-    icu-libs \
     npm \
     openssl-dev \
     python3-dev \

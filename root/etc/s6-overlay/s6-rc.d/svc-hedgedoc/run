@@ -1,4 +1,5 @@
 #!/usr/bin/with-contenv bash
+# shellcheck shell=bash
 
 # if user is using our env variables set the DB_URL
 if [[ -n ${DB_HOST+x} ]]; then

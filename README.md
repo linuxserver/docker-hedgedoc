@@ -87,10 +87,10 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
-      - "DB_HOST=<hostname or ip>"
+      - DB_HOST=hedgedoc-db
       - DB_PORT=3306
       - DB_USER=hedgedoc
-      - "DB_PASS=<secret password>"
+      - DB_PASS=
       - DB_NAME=hedgedoc
       - CMD_DOMAIN=localhost
       - CMD_URL_ADDPORT=false #optional
@@ -112,10 +112,10 @@ docker run -d \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Etc/UTC \
-  -e DB_HOST="<hostname or ip>" \
+  -e DB_HOST=hedgedoc-db \
   -e DB_PORT=3306 \
   -e DB_USER=hedgedoc \
-  -e DB_PASS="<secret password>" \
+  -e DB_PASS= \
   -e DB_NAME=hedgedoc \
   -e CMD_DOMAIN=localhost \
   -e CMD_URL_ADDPORT=false `#optional` \
@@ -139,10 +139,10 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
-| `-e DB_HOST=<hostname or ip>` | Host address of mysql database |
+| `-e DB_HOST=hedgedoc-db` | Host address of mysql database |
 | `-e DB_PORT=3306` | Port to access mysql database default is 3306 |
 | `-e DB_USER=hedgedoc` | Database user |
-| `-e DB_PASS=<secret password>` | Database password |
+| `-e DB_PASS=` | Database password |
 | `-e DB_NAME=hedgedoc` | Database name |
 | `-e CMD_DOMAIN=localhost` | The address the gui will be accessed at (ie. `192.168.1.1` or `hedgedoc.domain.com`). |
 | `-e CMD_URL_ADDPORT=false` | Set to `true` if using a port other than `80` or `443`. |
@@ -260,6 +260,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **05.03.23:** - Rebase to Alpine 3.17.
 * **02.11.22:** - Rebase to Alpine 3.16, migrate to s6v3.
 * **10.04.22:** - Use python3 to build node sqlite3.
 * **10.02.22:** - Rebase to Alpine 3.15.

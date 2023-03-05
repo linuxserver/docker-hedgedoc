@@ -21,10 +21,10 @@ common_param_env_vars_enabled: true
 param_container_name: "{{ project_name }}"
 param_usage_include_env: true
 param_env_vars:
-  - { env_var: "DB_HOST", env_value: "<hostname or ip>", desc: "Host address of mysql database" }
+  - { env_var: "DB_HOST", env_value: "hedgedoc-db", desc: "Host address of mysql database" }
   - { env_var: "DB_PORT", env_value: "3306", desc: "Port to access mysql database default is 3306" }
   - { env_var: "DB_USER", env_value: "hedgedoc", desc: "Database user" }
-  - { env_var: "DB_PASS", env_value: "<secret password>", desc: "Database password" }
+  - { env_var: "DB_PASS", env_value: "", desc: "Database password" }
   - { env_var: "DB_NAME", env_value: "hedgedoc", desc: "Database name" }
   - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
   - { env_var: "CMD_DOMAIN", env_value: "localhost", desc: "The address the gui will be accessed at (ie. `192.168.1.1` or `hedgedoc.domain.com`)." }
@@ -54,6 +54,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "05.03.23:", desc: "Rebase to Alpine 3.17." }
   - { date: "02.11.22:", desc: "Rebase to Alpine 3.16, migrate to s6v3." }
   - { date: "10.04.22:", desc: "Use python3 to build node sqlite3." }
   - { date: "10.02.22:", desc: "Rebase to Alpine 3.15." }
