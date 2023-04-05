@@ -871,7 +871,7 @@ tunnel-agent                              0.6.0                  npm
 tweetnacl                                 0.14.5                 npm     
 type-is                                   1.6.18                 npm     
 typedarray                                0.0.6                  npm     
-tzdata                                    2023b-r1               apk     
+tzdata                                    2023c-r0               apk     
 uc.micro                                  1.0.6                  npm     
 uid-safe                                  2.1.5                  npm     
 uid2                                      0.0.4                  npm     
