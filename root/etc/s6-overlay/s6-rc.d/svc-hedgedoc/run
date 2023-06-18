@@ -1,4 +1,5 @@
 #!/usr/bin/with-contenv bash
+# shellcheck shell=bash
 
 # if user is using our env variables set the DB_URL
 if [[ -n ${DB_HOST+x} ]]; then
@@ -17,5 +18,5 @@ fi
 
 # run program
 exec \
-    s6-notifyoncheck -d -n 300 -w 1000 -c "nc -z localhost 3000" \
+    s6-notifyoncheck -d -n 300 -w 1000 \
         cd /app/hedgedoc s6-setuidgid abc node app.js 
