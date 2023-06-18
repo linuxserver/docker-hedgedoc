@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-alpine:3.16
+FROM ghcr.io/linuxserver/baseimage-alpine:3.18
 
 # set version label
 ARG BUILD_DATE
@@ -10,15 +10,16 @@ LABEL maintainer="chbmb"
 # environment settings
 ENV NODE_ENV production
 ENV PUPPETEER_SKIP_DOWNLOAD true
+ENV YARN_CACHE_FOLDER=/tmp/.yarn
 
 RUN \
   echo "**** install build packages ****" && \
-  apk add -U --update --no-cache \
+  apk add -U --no-cache \
     fontconfig \
     font-noto \
     netcat-openbsd \
-    nodejs && \
-  apk add -U --update --no-cache --virtual=build-dependencies \
+    nodejs-current && \
+  apk add -U --no-cache --virtual=build-dependencies \
     build-base \
     g++ \
     gcc \
@@ -42,12 +43,16 @@ RUN \
   tar xf /tmp/hedgedoc.tar.gz -C \
     /app/hedgedoc --strip-components=1 && \
   cd /app/hedgedoc && \
-  bin/setup && \
+  yarn install --immutable && \
+  yarn run build && \
+  yarn workspaces focus --production && \
   echo "**** cleanup ****" && \
   yarn cache clean && \
   apk del --purge \
     build-dependencies && \
   rm -rf \
+    $HOME/.npm \
+    $HOME/.yarn \
     /tmp/* 
 
 # add local files
