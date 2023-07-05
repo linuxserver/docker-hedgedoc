@@ -171,7 +171,7 @@ cookie-signature                  1.0.6                   npm
 cookiejar                         2.0.6                   npm     
 core-util-is                      1.0.2                   npm     
 core-util-is                      1.0.3                   npm     
-corepack                          0.18.0                  npm     
+corepack                          0.19.0                  npm     
 coreutils                         9.3-r1                  apk     
 crc-32                            1.2.2                   npm     
 crc32-stream                      4.0.2                   npm     
@@ -299,8 +299,8 @@ humanize-ms                       1.2.1                   npm
 i18n                              0.15.1                  npm     
 iconv-lite                        0.4.24                  npm     
 iconv-lite                        0.6.3                   npm     
-icu-data-en                       73.2-r0                 apk     
-icu-libs                          73.2-r0                 apk     
+icu-data-en                       73.2-r1                 apk     
+icu-libs                          73.2-r1                 apk     
 ieee754                           1.1.13                  npm     
 ieee754                           1.2.1                   npm     
 imurmurhash                       0.1.4                   npm     
@@ -462,13 +462,13 @@ ncurses-terminfo-base             6.4_p20230506-r0        apk
 negotiator                        0.6.3                   npm     
 netcat-openbsd                    1.219-r1                apk     
 nghttp2-libs                      1.53.0-r0               apk     
-node                              20.3.1                  binary  
+node                              20.4.0                  binary  
 node-addon-api                    4.3.0                   npm     
 node-fetch                        2.6.11                  npm     
 node-gyp                          8.4.1                   npm     
 node-gyp                          9.3.1                   npm     
 node-gyp-build                    4.6.0                   npm     
-nodejs-current                    20.3.1-r0               apk     
+nodejs-current                    20.4.0-r0               apk     
 nopt                              5.0.0                   npm     
 nopt                              6.0.0                   npm     
 normalize-path                    3.0.0                   npm     
