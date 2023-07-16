@@ -21,8 +21,6 @@ RUN \
     nodejs-current && \
   apk add -U --no-cache --virtual=build-dependencies \
     build-base \
-    g++ \
-    gcc \
     git \
     icu-libs \
     npm \
