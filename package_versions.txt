@@ -451,8 +451,8 @@ morgan                            1.10.0                  npm
 ms                                2.0.0                   npm   
 ms                                2.1.2                   npm   
 ms                                2.1.3                   npm   
-musl                              1.2.4-r1                apk   
-musl-utils                        1.2.4-r1                apk   
+musl                              1.2.4-r2                apk   
+musl-utils                        1.2.4-r2                apk   
 mustache                          4.2.0                   npm   
 mysql2                            3.5.2                   npm   
 named-placeholders                1.1.3                   npm   
