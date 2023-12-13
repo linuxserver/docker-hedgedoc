@@ -180,7 +180,7 @@ cssfilter                         0.0.10                  npm
 cssom                             0.2.5                   npm   
 cssom                             0.3.8                   npm   
 cssstyle                          0.2.37                  npm   
-curl                              8.4.0-r0                apk   
+curl                              8.5.0-r0                apk   
 dashdash                          1.14.1                  npm   
 debug                             2.6.9                   npm   
 debug                             3.1.0                   npm   
@@ -335,7 +335,7 @@ isstream                          0.1.2                   npm
 jackspeak                         2.2.2                   npm   
 jake                              10.8.7                  npm   
 jmespath                          0.16.0                  npm   
-jq                                1.6-r3                  apk   
+jq                                1.6-r4                  apk   
 js-yaml                           4.1.0                   npm   
 jsbn                              0.1.1                   npm   
 jsdom-nogyp                       0.8.3                   npm   
@@ -357,7 +357,7 @@ libbsd                            0.11.7-r1               apk
 libbz2                            1.0.8-r5                apk   
 libc-utils                        0.7.2-r5                apk   
 libcrypto3                        3.1.4-r1                apk   
-libcurl                           8.4.0-r0                apk   
+libcurl                           8.5.0-r0                apk   
 libexpat                          2.5.0-r1                apk   
 libgcc                            12.2.1_git20220924-r10  apk   
 libidn2                           2.3.4-r1                apk   
