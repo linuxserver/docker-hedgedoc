@@ -35,7 +35,7 @@ opt_param_env_vars:
   - { env_var: "CMD_ALLOW_ORIGIN", env_value: "['localhost']", desc: "Comma-separated list of allowed hostnames"}
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "/path/to/appdata", desc: "HedgeDoc config and configurable files" }
+  - { vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/config", desc: "Persistent config files" }
 param_usage_include_ports: true
 param_ports:
   - { external_port: "3000", internal_port: "3000", port_desc: "Web gui port (internal port also needs to be changed if accessing at port other than 80, 443 and 3000)." }
@@ -53,6 +53,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "23.12.23:", desc: "Rebase to Alpine 3.19."}
   - { date: "18.06.23:", desc: "Rebase to Alpine 3.18, deprecate armhf as per [https://www.linuxserver.io/armhf](https://www.linuxserver.io/armhf)." }
   - { date: "02.11.22:", desc: "Rebase to Alpine 3.16, migrate to s6v3." }
   - { date: "10.04.22:", desc: "Use python3 to build node sqlite3." }
