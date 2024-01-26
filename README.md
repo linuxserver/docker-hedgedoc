@@ -96,7 +96,7 @@ services:
       - CMD_PORT=3000 #optional
       - CMD_ALLOW_ORIGIN=['localhost'] #optional
     volumes:
-      - /path/to/appdata:/config
+      - /path/to/hedgedoc/config:/config
     ports:
       - 3000:3000
     restart: unless-stopped
@@ -121,7 +121,7 @@ docker run -d \
   -e CMD_PORT=3000 `#optional` \
   -e CMD_ALLOW_ORIGIN=['localhost'] `#optional` \
   -p 3000:3000 \
-  -v /path/to/appdata:/config \
+  -v /path/to/hedgedoc/config:/config \
   --restart unless-stopped \
   lscr.io/linuxserver/hedgedoc:latest
 ```
@@ -146,7 +146,7 @@ Containers are configured using parameters passed at runtime (such as those abov
 | `-e CMD_PROTOCOL_USESSL=false` | Set to `true` if accessing over https via reverse proxy. |
 | `-e CMD_PORT=3000` | If you wish to access hedgedoc at a port different than 80, 443 or 3000, you need to set this to that port (ie. `CMD_PORT=5000`) and change the port mapping accordingly (5000:5000). |
 | `-e CMD_ALLOW_ORIGIN=['localhost']` | Comma-separated list of allowed hostnames |
-| `-v /config` | HedgeDoc config and configurable files |
+| `-v /config` | Persistent config files |
 
 ## Environment variables from files (Docker secrets)
 
@@ -309,6 +309,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **23.12.23:** - Rebase to Alpine 3.19.
 * **18.06.23:** - Rebase to Alpine 3.18, deprecate armhf as per [https://www.linuxserver.io/armhf](https://www.linuxserver.io/armhf).
 * **02.11.22:** - Rebase to Alpine 3.16, migrate to s6v3.
 * **10.04.22:** - Use python3 to build node sqlite3.
