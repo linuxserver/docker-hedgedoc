@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-alpine:3.19
+FROM ghcr.io/linuxserver/baseimage-alpine:3.20
 
 # set version label
 ARG BUILD_DATE
@@ -44,6 +44,7 @@ RUN \
   yarn install --immutable && \
   yarn run build && \
   yarn workspaces focus --production && \
+  printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
   echo "**** cleanup ****" && \
   yarn cache clean && \
   apk del --purge \
@@ -51,10 +52,10 @@ RUN \
   rm -rf \
     $HOME/.npm \
     $HOME/.yarn \
-    /tmp/* 
+    /tmp/*
 
 # add local files
-COPY root/ / 
+COPY root/ /
 
 # ports and volumes
 EXPOSE 3000
