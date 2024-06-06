@@ -25,7 +25,6 @@ param_env_vars:
   - { env_var: "DB_USER", env_value: "hedgedoc", desc: "Database user" }
   - { env_var: "DB_PASS", env_value: "<secret password>", desc: "Database password" }
   - { env_var: "DB_NAME", env_value: "hedgedoc", desc: "Database name" }
-  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
   - { env_var: "CMD_DOMAIN", env_value: "localhost", desc: "The address the gui will be accessed at (ie. `192.168.1.1` or `hedgedoc.domain.com`)." }
 opt_param_usage_include_env: true
 opt_param_env_vars:
@@ -47,12 +46,13 @@ app_setup_block: |
 
   [Full list of HedgeDoc options](https://docs.hedgedoc.org/configuration/)
 
-  For convience we provide a working example using Mysql as a backend in this document, if you do not wish to use our custom environment values or a Mysql database backend feel free to leverage any of the settings laid out in the link above.
+  For convenience we provide a working example using Mysql as a backend in this document, if you do not wish to use our custom environment values or a Mysql database backend feel free to leverage any of the settings laid out in the link above.
 
   To run behind a reverse proxy we have a [preconfigured config](https://github.com/linuxserver/reverse-proxy-confs/blob/master/hedgedoc.subdomain.conf.sample) using docker networking included in our [SWAG](https://github.com/linuxserver/docker-swag) image and you can read how to use this in the [Reverse Proxy Confs repository](https://github.com/linuxserver/reverse-proxy-confs/#how-to-use-these-reverse-proxy-configs)
 
 # changelog
 changelogs:
+  - { date: "06.06.24:", desc: "Rebase to Alpine 3.20."}
   - { date: "23.12.23:", desc: "Rebase to Alpine 3.19."}
   - { date: "18.06.23:", desc: "Rebase to Alpine 3.18, deprecate armhf as per [https://www.linuxserver.io/armhf](https://www.linuxserver.io/armhf)." }
   - { date: "02.11.22:", desc: "Rebase to Alpine 3.16, migrate to s6v3." }
