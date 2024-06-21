@@ -3,7 +3,7 @@
 
 # if user is using our env variables set the DB_URL
 if [[ -n ${DB_HOST+x} ]]; then
-    export CMD_DB_URL="mysql://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
+    export CMD_DB_URL="${CMD_DB_DIALECT:-mysql}://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}"
 fi
 
 # set env var for sqlite if db url and db_host unset
