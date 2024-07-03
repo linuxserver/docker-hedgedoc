@@ -184,7 +184,7 @@ cssfilter                         0.0.10                 npm
 cssom                             0.2.5                  npm                     
 cssom                             0.3.8                  npm                     
 cssstyle                          0.2.37                 npm                     
-curl                              8.7.1-r0               apk                     
+curl                              8.8.0-r0               apk                     
 dashdash                          1.14.1                 npm                     
 debug                             2.6.9                  npm   (+7 duplicates)   
 debug                             3.1.0                  npm   (+3 duplicates)   
@@ -360,8 +360,8 @@ libacl                            2.3.2-r0               apk
 libattr                           2.5.2-r0               apk                     
 libbsd                            0.12.2-r0              apk                     
 libbz2                            1.0.8-r6               apk                     
-libcrypto3                        3.3.1-r0               apk                     
-libcurl                           8.7.1-r0               apk                     
+libcrypto3                        3.3.1-r1               apk                     
+libcurl                           8.8.0-r0               apk                     
 libexpat                          2.6.2-r0               apk                     
 libgcc                            13.2.1_git20240309-r0  apk                     
 libidn2                           2.3.7-r0               apk                     
@@ -371,7 +371,7 @@ libncursesw                       6.4_p20240420-r0       apk
 libpng                            1.6.43-r0              apk                     
 libproc2                          4.0.4-r0               apk                     
 libpsl                            0.21.5-r1              apk                     
-libssl3                           3.3.1-r0               apk                     
+libssl3                           3.3.1-r1               apk                     
 libstdc++                         13.2.1_git20240309-r0  apk                     
 libunistring                      1.2-r0                 apk                     
 libuv                             1.48.0-r0              apk                     
@@ -465,7 +465,7 @@ nanoid                            2.1.11                 npm
 ncurses-terminfo-base             6.4_p20240420-r0       apk                     
 negotiator                        0.6.3                  npm                     
 netcat-openbsd                    1.226-r0               apk                     
-nghttp2-libs                      1.62.0-r0              apk                     
+nghttp2-libs                      1.62.1-r0              apk                     
 node-addon-api                    4.3.0                  npm                     
 node-fetch                        2.6.12                 npm                     
 node-gyp                          8.4.1                  npm                     
