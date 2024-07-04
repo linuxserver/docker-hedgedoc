@@ -8,16 +8,15 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 LABEL maintainer="chbmb"
 
 # environment settings
-ENV NODE_ENV production
-ENV PUPPETEER_SKIP_DOWNLOAD true
-ENV YARN_CACHE_FOLDER=/tmp/.yarn
+ENV NODE_ENV=production \
+  PUPPETEER_SKIP_DOWNLOAD=true \
+  YARN_CACHE_FOLDER=/tmp/.yarn
 
 RUN \
   echo "**** install build packages ****" && \
   apk add -U --no-cache \
     fontconfig \
     font-noto \
-    netcat-openbsd \
     nodejs-current && \
   apk add -U --no-cache --virtual=build-dependencies \
     build-base \
