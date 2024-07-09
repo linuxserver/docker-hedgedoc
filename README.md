@@ -65,7 +65,7 @@ HedgeDoc web interface can be accessed `http://${IP}:3000/`, if you want to use 
 
 [Full list of HedgeDoc options](https://docs.hedgedoc.org/configuration/)
 
-For convenience we provide a working example using Mysql as a backend in this document, if you do not wish to use our custom environment values or a Mysql database backend feel free to leverage any of the settings laid out in the link above.
+For convenience we provide a working example using Mariadb as a backend in this document.
 
 To run behind a reverse proxy we have a [preconfigured config](https://github.com/linuxserver/reverse-proxy-confs/blob/master/hedgedoc.subdomain.conf.sample) using docker networking included in our [SWAG](https://github.com/linuxserver/docker-swag) image and you can read how to use this in the [Reverse Proxy Confs repository](https://github.com/linuxserver/reverse-proxy-confs/#how-to-use-these-reverse-proxy-configs)
 
@@ -95,6 +95,7 @@ services:
       - CMD_PROTOCOL_USESSL=false #optional
       - CMD_PORT=3000 #optional
       - CMD_ALLOW_ORIGIN=['localhost'] #optional
+      - CMD_DB_DIALECT= #optional
     volumes:
       - /path/to/hedgedoc/config:/config
     ports:
@@ -120,6 +121,7 @@ docker run -d \
   -e CMD_PROTOCOL_USESSL=false `#optional` \
   -e CMD_PORT=3000 `#optional` \
   -e CMD_ALLOW_ORIGIN=['localhost'] `#optional` \
+  -e CMD_DB_DIALECT= `#optional` \
   -p 3000:3000 \
   -v /path/to/hedgedoc/config:/config \
   --restart unless-stopped \
@@ -136,8 +138,8 @@ Containers are configured using parameters passed at runtime (such as those abov
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
-| `-e DB_HOST=<hostname or ip>` | Host address of mysql database |
-| `-e DB_PORT=3306` | Port to access mysql database default is 3306 |
+| `-e DB_HOST=<hostname or ip>` | Host address of mariadb database |
+| `-e DB_PORT=3306` | Port to access mariadb database default is 3306 |
 | `-e DB_USER=hedgedoc` | Database user |
 | `-e DB_PASS=<secret password>` | Database password |
 | `-e DB_NAME=hedgedoc` | Database name |
@@ -146,6 +148,7 @@ Containers are configured using parameters passed at runtime (such as those abov
 | `-e CMD_PROTOCOL_USESSL=false` | Set to `true` if accessing over https via reverse proxy. |
 | `-e CMD_PORT=3000` | If you wish to access hedgedoc at a port different than 80, 443 or 3000, you need to set this to that port (ie. `CMD_PORT=5000`) and change the port mapping accordingly (5000:5000). |
 | `-e CMD_ALLOW_ORIGIN=['localhost']` | Comma-separated list of allowed hostnames |
+| `-e CMD_DB_DIALECT=` | This variable allows selecting a database engine (if DB_HOST not set up). Available options are: `mariadb`, `mysql`, `postgres`, `sqlite`. |
 | `-v /config` | Persistent config files |
 
 ## Environment variables from files (Docker secrets)
@@ -309,6 +312,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **21.06.24:** - Allow using `CMD_DB_DIALECT` to set up the `CMD_DB_URL`.
 * **06.06.24:** - Rebase to Alpine 3.20.
 * **23.12.23:** - Rebase to Alpine 3.19.
 * **18.06.23:** - Rebase to Alpine 3.18, deprecate armhf as per [https://www.linuxserver.io/armhf](https://www.linuxserver.io/armhf).
