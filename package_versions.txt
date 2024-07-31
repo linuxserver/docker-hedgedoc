@@ -61,7 +61,7 @@ ajv                               6.12.6                 npm
 alpine-baselayout                 3.6.5-r0               apk                     
 alpine-baselayout-data            3.6.5-r0               apk                     
 alpine-keys                       2.4-r1                 apk                     
-alpine-release                    3.20.1-r0              apk                     
+alpine-release                    3.20.2-r0              apk                     
 ansi-regex                        5.0.1                  npm                     
 ansi-regex                        6.0.1                  npm   (+1 duplicate)    
 ansi-styles                       4.3.0                  npm                     
@@ -184,7 +184,7 @@ cssfilter                         0.0.10                 npm
 cssom                             0.2.5                  npm                     
 cssom                             0.3.8                  npm                     
 cssstyle                          0.2.37                 npm                     
-curl                              8.8.0-r0               apk                     
+curl                              8.9.0-r0               apk                     
 dashdash                          1.14.1                 npm                     
 debug                             2.6.9                  npm   (+7 duplicates)   
 debug                             3.1.0                  npm   (+3 duplicates)   
@@ -361,7 +361,7 @@ libattr                           2.5.2-r0               apk
 libbsd                            0.12.2-r0              apk                     
 libbz2                            1.0.8-r6               apk                     
 libcrypto3                        3.3.1-r3               apk                     
-libcurl                           8.8.0-r0               apk                     
+libcurl                           8.9.0-r0               apk                     
 libexpat                          2.6.2-r0               apk                     
 libgcc                            13.2.1_git20240309-r0  apk                     
 libidn2                           2.3.7-r0               apk                     
