@@ -62,7 +62,7 @@ ajv                               6.12.6                 npm
 alpine-baselayout                 3.6.5-r0               apk                     
 alpine-baselayout-data            3.6.5-r0               apk                     
 alpine-keys                       2.4-r1                 apk                     
-alpine-release                    3.20.2-r0              apk                     
+alpine-release                    3.20.3-r0              apk                     
 ansi-regex                        5.0.1                  npm                     
 ansi-regex                        6.0.1                  npm   (+1 duplicate)    
 ansi-styles                       4.3.0                  npm                     
@@ -382,7 +382,7 @@ libbsd                            0.12.2-r0              apk
 libbz2                            1.0.8-r6               apk                     
 libcrypto3                        3.3.2-r0               apk                     
 libcurl                           8.9.1-r1               apk                     
-libexpat                          2.6.2-r0               apk                     
+libexpat                          2.6.3-r0               apk                     
 libgcc                            13.2.1_git20240309-r0  apk                     
 libidn2                           2.3.7-r0               apk                     
 libintl                           0.22.5-r0              apk                     
@@ -696,7 +696,7 @@ truncate-utf8-bytes               1.0.2                  npm
 tunnel-agent                      0.6.0                  npm                     
 tweetnacl                         0.14.5                 npm                     
 type-is                           1.6.18                 npm                     
-tzdata                            2024a-r1               apk                     
+tzdata                            2024b-r0               apk                     
 uc.micro                          1.0.6                  npm                     
 uid-safe                          2.1.5                  npm                     
 uid2                              0.0.4                  npm                     
