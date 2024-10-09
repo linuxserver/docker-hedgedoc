@@ -91,6 +91,8 @@ aws-ssl-profiles                  1.1.2                  npm
 aws4                              1.13.2                 npm                     
 axios                             1.7.7                  npm                     
 azure-storage                     2.10.7                 npm                     
+azure-storage-md5-wrapper         UNKNOWN                npm                     
+azure-storage-request-wrapper     UNKNOWN                npm                     
 b4a                               1.6.6                  npm                     
 backo2                            1.0.2                  npm                     
 backoff                           2.5.0                  npm                     
@@ -140,6 +142,7 @@ chance                            1.1.12                 npm
 cheerio                           0.22.0                 npm                     
 chownr                            1.1.4                  npm                     
 chownr                            2.0.0                  npm                     
+cjs-use                           UNKNOWN                npm                     
 clean-stack                       2.2.0                  npm                     
 clean-webpack-plugin              4.0.0                  npm                     
 cls-bluebird                      2.1.0                  npm                     
@@ -238,6 +241,7 @@ err-code                          2.0.3                  npm
 es-define-property                1.0.0                  npm                     
 es-errors                         1.3.0                  npm                     
 escape-html                       1.0.3                  npm                     
+esm-use                           UNKNOWN                npm                     
 etag                              1.8.1                  npm                     
 events                            1.1.1                  npm                     
 expand-template                   2.0.3                  npm                     
@@ -693,6 +697,7 @@ tough-cookie                      2.5.0                  npm
 tr46                              0.0.3                  npm                     
 triple-beam                       1.4.1                  npm                     
 truncate-utf8-bytes               1.0.2                  npm                     
+ts-use                            UNKNOWN                npm                     
 tunnel-agent                      0.6.0                  npm                     
 tweetnacl                         0.14.5                 npm                     
 type-is                           1.6.18                 npm                     
