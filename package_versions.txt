@@ -386,12 +386,12 @@ libbsd                            0.12.2-r0              apk
 libbz2                            1.0.8-r6               apk                     
 libcrypto3                        3.3.2-r1               apk                     
 libcurl                           8.9.1-r2               apk                     
-libexpat                          2.6.3-r0               apk                     
+libexpat                          2.6.4-r0               apk                     
 libgcc                            13.2.1_git20240309-r0  apk                     
 libidn2                           2.3.7-r0               apk                     
 libintl                           0.22.5-r0              apk                     
 libmd                             1.1.0-r0               apk                     
-libncursesw                       6.4_p20240420-r1       apk                     
+libncursesw                       6.4_p20240420-r2       apk                     
 libpng                            1.6.44-r0              apk                     
 libproc2                          4.0.4-r0               apk                     
 libpsl                            0.21.5-r1              apk                     
@@ -487,7 +487,7 @@ mysql2                            3.11.0                 npm
 named-placeholders                1.1.3                  npm                     
 nanoid                            2.1.11                 npm                     
 napi-build-utils                  1.0.2                  npm                     
-ncurses-terminfo-base             6.4_p20240420-r1       apk                     
+ncurses-terminfo-base             6.4_p20240420-r2       apk                     
 negotiator                        0.6.3                  npm                     
 netcat-openbsd                    1.226-r0               apk                     
 nghttp2-libs                      1.62.1-r0              apk                     
