@@ -62,7 +62,7 @@ ajv                               6.12.6                 npm
 alpine-baselayout                 3.6.5-r0               apk                     
 alpine-baselayout-data            3.6.5-r0               apk                     
 alpine-keys                       2.4-r1                 apk                     
-alpine-release                    3.20.3-r0              apk                     
+alpine-release                    3.20.5-r0              apk                     
 ansi-regex                        5.0.1                  npm                     
 ansi-regex                        6.0.1                  npm   (+1 duplicate)    
 ansi-styles                       4.3.0                  npm                     
@@ -130,8 +130,8 @@ busybox-binsh                     1.36.1-r29             apk
 bytes                             3.0.0                  npm                     
 bytes                             3.1.2                  npm                     
 c-ares                            1.33.1-r0              apk                     
-ca-certificates                   20241121-r0            apk                     
-ca-certificates-bundle            20241121-r0            apk                     
+ca-certificates                   20241121-r1            apk                     
+ca-certificates-bundle            20241121-r1            apk                     
 cacache                           15.3.0                 npm                     
 cacache                           18.0.4                 npm                     
 call-bind                         1.0.7                  npm                     
@@ -179,10 +179,10 @@ cookiejar                         2.0.6                  npm
 core-util-is                      1.0.2                  npm   (+1 duplicate)    
 core-util-is                      1.0.3                  npm                     
 corepack                          0.25.2                 npm                     
-coreutils                         9.5-r1                 apk                     
-coreutils-env                     9.5-r1                 apk                     
-coreutils-fmt                     9.5-r1                 apk                     
-coreutils-sha512sum               9.5-r1                 apk                     
+coreutils                         9.5-r2                 apk                     
+coreutils-env                     9.5-r2                 apk                     
+coreutils-fmt                     9.5-r2                 apk                     
+coreutils-sha512sum               9.5-r2                 apk                     
 crc-32                            1.2.2                  npm                     
 crc32-stream                      5.0.1                  npm                     
 cross-spawn                       7.0.3                  npm                     
@@ -296,6 +296,7 @@ glob                              10.4.5                 npm   (+2 duplicates)
 glob                              7.2.3                  npm                     
 glob                              8.1.0                  npm                     
 globby                            6.1.0                  npm                     
+gmp                               6.3.0-r1               apk                     
 gopd                              1.0.1                  npm                     
 graceful-fs                       4.2.11                 npm                     
 har-schema                        2.0.0                  npm                     
