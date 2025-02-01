@@ -18,7 +18,7 @@ RUN \
     fontconfig \
     font-noto \
     nodejs-current \
-    postgresql16-client \&& \
+    postgresql16-client && \
   apk add -U --no-cache --virtual=build-dependencies \
     build-base \
     git \
