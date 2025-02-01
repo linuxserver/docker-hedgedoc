@@ -11,20 +11,33 @@ mkdir -p /config/uploads
 rm -rf /app/hedgedoc/public/uploads
 ln -s /config/uploads /app/hedgedoc/public/uploads
 
-# check for the mysql endpoint
-if [[ -n "${DB_HOST+x}" ]]; then
+if [[ "${CMD_DB_DIALECT}" = "sqlite" ]]; then
+    touch /config/hedgedoc.sqlite
+    lsiown abc:abc /config/hedgedoc.sqlite
+elif [[ "${CMD_DB_DIALECT}" = "postgres" ]]; then
     echo "Waiting for DB to be available"
-    END=$((SECONDS+30))
+    END=$((SECONDS + 30))
     while [[ ${SECONDS} -lt ${END} ]] && [[ -n "${DB_HOST+x}" ]]; do
-        if [[ $(/usr/bin/nc -w1 "${DB_HOST}" "${DB_PORT:-3306}" | tr -d '\0') ]]; then
-            if [[ -n "${RUN}" ]]; then
-                break
-            fi
-            RUN="RAN"
-            # we sleep here again due to first run init on DB containers
-            if [[ ! -f /dbwait.lock ]]; then
+        if pg_isready -h "${DB_HOST}" -p "${DB_PORT:-5432}" -U "${DB_USER}" -q; then
+            if [[ ! -f /tmp/dbwait.lock ]]; then
                 sleep 5
             fi
+            touch /tmp/dbwait.lock
+            break
+        else
+            sleep 1
+        fi
+    done
+else
+    echo "Waiting for DB to be available"
+    END=$((SECONDS + 30))
+    while [[ ${SECONDS} -lt ${END} ]] && [[ -n "${DB_HOST+x}" ]]; do
+        if [[ $(/usr/bin/nc -w1 "${DB_HOST}" "${DB_PORT:-3306}" | tr -d '\0') ]]; then
+            if [[ ! -f /tmp/dbwait.lock ]]; then
+                sleep 5
+            fi
+            touch /tmp/dbwait.lock
+            break
         else
             sleep 1
         fi
@@ -40,6 +53,3 @@ fi
 # permissions
 lsiown -R abc:abc \
     /config
-
-# set lockfile to avoid DB waits for this specific container
-touch /dbwait.lock

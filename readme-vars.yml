@@ -19,35 +19,33 @@ common_param_env_vars_enabled: true
 param_container_name: "{{ project_name }}"
 param_usage_include_env: true
 param_env_vars:
-  - {env_var: "DB_HOST", env_value: "<hostname or ip>", desc: "Host address of mariadb database"}
-  - {env_var: "DB_PORT", env_value: "3306", desc: "Port to access mariadb database default is 3306"}
-  - {env_var: "DB_USER", env_value: "hedgedoc", desc: "Database user"}
-  - {env_var: "DB_PASS", env_value: "<secret password>", desc: "Database password"}
-  - {env_var: "DB_NAME", env_value: "hedgedoc", desc: "Database name"}
+  - {env_var: "DB_HOST", env_value: "", desc: "Host address of database"}
+  - {env_var: "DB_PORT", env_value: "", desc: "Port to access database default"}
+  - {env_var: "DB_USER", env_value: "", desc: "Database user"}
+  - {env_var: "DB_PASS", env_value: "", desc: "Database password"}
+  - {env_var: "DB_NAME", env_value: "", desc: "Database name"}
   - {env_var: "CMD_DOMAIN", env_value: "localhost", desc: "The address the gui will be accessed at (ie. `192.168.1.1` or `hedgedoc.domain.com`)."}
 opt_param_usage_include_env: true
 opt_param_env_vars:
   - {env_var: "CMD_URL_ADDPORT", env_value: "false", desc: "Set to `true` if using a port other than `80` or `443`."}
   - {env_var: "CMD_PROTOCOL_USESSL", env_value: "false", desc: "Set to `true` if accessing over https via reverse proxy."}
   - {env_var: "CMD_PORT", env_value: "3000", desc: "If you wish to access hedgedoc at a port different than 80, 443 or 3000, you need to set this to that port (ie. `CMD_PORT=5000`) and change the port mapping accordingly (5000:5000)."}
-  - {env_var: "CMD_ALLOW_ORIGIN", env_value: "['localhost']", desc: "Comma-separated list of allowed hostnames"}
-  - {env_var: "CMD_DB_DIALECT", env_value: "", desc: "This variable allows selecting a database engine (if DB_HOST not set up). Available options are: `mariadb`, `mysql`, `postgres`, `sqlite`."}
+  - {env_var: "CMD_ALLOW_ORIGIN", env_value: "['localhost']", desc: "Comma-separated array of allowed hostnames"}
+  - {env_var: "CMD_DB_DIALECT", env_value: "", desc: "Select a database engine to use. Available options are: `mariadb`, `mysql`, `postgres`, `sqlite`. Defaults to `mariadb`."}
 param_usage_include_vols: true
 param_volumes:
   - {vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/config", desc: "Persistent config files"}
 param_usage_include_ports: true
 param_ports:
   - {external_port: "3000", internal_port: "3000", port_desc: "Web gui port (internal port also needs to be changed if accessing at port other than 80, 443 and 3000)."}
+readonly_supported: false
+nonroot_supported: false
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
   HedgeDoc web interface can be accessed `http://${IP}:3000/`, if you want to use a custom domain or anything besides port 3000 you will need to leverage their env settings for callbacks: (specifically for CMD_DOMAIN, CMD_PORT and CMD_URL_ADDPORT)
 
   [Full list of HedgeDoc options](https://docs.hedgedoc.org/configuration/)
-
-  For convenience we provide a working example using Mariadb as a backend in this document.
-
-  To run behind a reverse proxy we have a [preconfigured config](https://github.com/linuxserver/reverse-proxy-confs/blob/master/hedgedoc.subdomain.conf.sample) using docker networking included in our [SWAG](https://github.com/linuxserver/docker-swag) image and you can read how to use this in the [Reverse Proxy Confs repository](https://github.com/linuxserver/reverse-proxy-confs/#how-to-use-these-reverse-proxy-configs)
 # init diagram
 init_diagram: |
   "hedgedoc:latest": {
@@ -93,6 +91,7 @@ init_diagram: |
   "hedgedoc:latest" <- Base Images
 # changelog
 changelogs:
+  - {date: "01.02.25:", desc: "Rebase to Alpine 3.21."}
   - {date: "21.06.24:", desc: "Allow using `CMD_DB_DIALECT` to set up the `CMD_DB_URL`."}
   - {date: "06.06.24:", desc: "Rebase to Alpine 3.20."}
   - {date: "23.12.23:", desc: "Rebase to Alpine 3.19."}
