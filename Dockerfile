@@ -17,6 +17,7 @@ RUN \
   apk add -U --no-cache \
     fontconfig \
     font-noto \
+    icu-data-full \
     nodejs-current && \
   apk add -U --no-cache --virtual=build-dependencies \
     build-base \
