@@ -344,7 +344,7 @@ humanize-ms                       1.2.1                  npm
 i18n                              0.15.1                 npm                     
 iconv-lite                        0.4.24                 npm   (+1 duplicate)    
 iconv-lite                        0.6.3                  npm                     
-icu-data-en                       74.2-r0                apk                     
+icu-data-full                     74.2-r0                apk                     
 icu-libs                          74.2-r0                apk                     
 ieee754                           1.1.13                 npm                     
 ieee754                           1.2.1                  npm                     
@@ -407,7 +407,7 @@ libbsd                            0.12.2-r0              apk
 libbz2                            1.0.8-r6               apk                     
 libcrypto3                        3.3.3-r0               apk                     
 libcurl                           8.12.1-r0              apk                     
-libexpat                          2.6.4-r0               apk                     
+libexpat                          2.7.0-r0               apk                     
 libgcc                            13.2.1_git20240309-r1  apk                     
 libidn2                           2.3.7-r0               apk                     
 libintl                           0.22.5-r0              apk                     
