@@ -316,6 +316,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **24.02.25:** - Add missing icu-data-full to fix bug with TextDecoder and image uploads.
 * **21.06.24:** - Allow using `CMD_DB_DIALECT` to set up the `CMD_DB_URL`.
 * **06.06.24:** - Rebase to Alpine 3.20.
 * **23.12.23:** - Rebase to Alpine 3.19.
