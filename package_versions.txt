@@ -729,7 +729,7 @@ ts-use                            UNKNOWN                npm
 tunnel-agent                      0.6.0                  npm                     
 tweetnacl                         0.14.5                 npm                     
 type-is                           1.6.18                 npm                     
-tzdata                            2025a-r0               apk                     
+tzdata                            2025b-r0               apk                     
 uc.micro                          1.0.6                  npm                     
 uid-safe                          2.1.5                  npm                     
 uid2                              0.0.4                  npm                     
