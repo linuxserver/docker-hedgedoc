@@ -403,7 +403,7 @@ libbsd                            0.12.2-r0              apk
 libbz2                            1.0.8-r6               apk                     
 libcrypto3                        3.3.4-r0               apk                     
 libcurl                           8.12.1-r0              apk                     
-libexpat                          2.7.0-r0               apk                     
+libexpat                          2.7.2-r0               apk                     
 libgcc                            13.2.1_git20240309-r1  apk                     
 libidn2                           2.3.7-r0               apk                     
 libintl                           0.22.5-r0              apk                     
