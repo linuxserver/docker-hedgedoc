@@ -95,6 +95,7 @@ init_diagram: |
   "hedgedoc:latest" <- Base Images
 # changelog
 changelogs:
+  - {date: "14.10.25:", desc: "Rebase to Alpine 3.22."}
   - {date: "24.02.25:", desc: "Add missing icu-data-full to fix bug with TextDecoder and image uploads."}
   - {date: "21.06.24:", desc: "Allow using `CMD_DB_DIALECT` to set up the `CMD_DB_URL`."}
   - {date: "06.06.24:", desc: "Rebase to Alpine 3.20."}
