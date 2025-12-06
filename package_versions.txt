@@ -62,7 +62,7 @@ NAME                              VERSION           TYPE
 @xmldom/is-dom-node               1.0.1             npm                    
 @xmldom/xmldom                    0.8.11            npm                    
 @zxing/text-encoding              0.9.0             npm                    
-HedgeDoc                          1.10.4            npm                    
+HedgeDoc                          1.10.5            npm                    
 Idle.Js                           0.0.1             npm                    
 abbrev                            1.1.1             npm                    
 abbrev                            4.0.0             npm                    
