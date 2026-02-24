@@ -70,7 +70,7 @@ NAME                              VERSION           TYPE
 @xmldom/is-dom-node               1.0.1             npm                    
 @xmldom/xmldom                    0.8.11            npm                    
 @zxing/text-encoding              0.9.0             npm                    
-HedgeDoc                          1.10.6            npm                    
+HedgeDoc                          1.10.7            npm                    
 Idle.Js                           0.0.1             npm                    
 abbrev                            1.1.1             npm                    
 abbrev                            4.0.0             npm                    
@@ -420,7 +420,7 @@ libidn2                           2.3.7-r0          apk
 libintl                           0.24.1-r0         apk                    
 libmd                             1.1.0-r0          apk                    
 libncursesw                       6.5_p20250503-r0  apk                    
-libpng                            1.6.54-r0         apk                    
+libpng                            1.6.55-r0         apk                    
 libproc2                          4.0.4-r3          apk                    
 libpsl                            0.21.5-r3         apk                    
 libssl3                           3.5.5-r0          apk                    
