@@ -746,7 +746,7 @@ tweetnacl                         0.14.5            npm
 type-is                           1.6.18            npm                    
 type-is                           2.0.1             npm                    
 typed-array-buffer                1.0.3             npm                    
-tzdata                            2025c-r0          apk                    
+tzdata                            2026a-r0          apk                    
 uc.micro                          1.0.6             npm                    
 uid-safe                          2.1.5             npm                    
 uid2                              0.0.4             npm                    
