@@ -214,7 +214,7 @@ css-select                        1.2.0             npm
 css-what                          2.1.3             npm                    
 cssfilter                         0.0.10            npm                    
 cssstyle                          4.6.0             npm                    
-curl                              8.14.1-r2         apk                    
+curl                              8.14.1-r3         apk                    
 dashdash                          1.14.1            npm                    
 data-urls                         5.0.0             npm                    
 debug                             2.6.9             npm   (+6 duplicates)  
@@ -417,7 +417,7 @@ libattr                           2.5.2-r2          apk
 libbsd                            0.12.2-r0         apk                    
 libbz2                            1.0.8-r6          apk                    
 libcrypto3                        3.5.7-r0          apk                    
-libcurl                           8.14.1-r2         apk                    
+libcurl                           8.14.1-r3         apk                    
 libexpat                          2.8.2-r0          apk                    
 libgcc                            14.2.0-r6         apk                    
 libidn2                           2.3.7-r0          apk                    
@@ -741,7 +741,7 @@ tweetnacl                         0.14.5            npm
 type-is                           1.6.18            npm                    
 type-is                           2.1.0             npm                    
 typed-array-buffer                1.0.3             npm                    
-tzdata                            2026b-r0          apk                    
+tzdata                            2026c-r0          apk                    
 uc.micro                          1.0.6             npm                    
 uid-safe                          2.1.5             npm                    
 uid2                              0.0.4             npm                    
