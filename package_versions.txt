@@ -417,7 +417,7 @@ libapk                            3.0.7-r0          apk
 libattr                           2.5.2-r2          apk                    
 libbsd                            0.12.2-r0         apk                    
 libbz2                            1.0.8-r6          apk                    
-libcrypto3                        3.5.7-r0          apk                    
+libcrypto3                        3.5.8-r0          apk                    
 libcurl                           8.21.0-r0         apk                    
 libexpat                          2.8.3-r0          apk                    
 libgcc                            15.2.0-r5         apk                    
@@ -428,7 +428,7 @@ libncursesw                       6.6_p20260516-r0  apk
 libpng                            1.6.58-r1         apk                    
 libproc2                          4.0.6-r0          apk                    
 libpsl                            0.21.5-r3         apk                    
-libssl3                           3.5.7-r0          apk                    
+libssl3                           3.5.8-r0          apk                    
 libstdc++                         15.2.0-r5         apk                    
 libunistring                      1.4.2-r0          apk                    
 libuv                             1.52.1-r0         apk                    
@@ -521,7 +521,7 @@ node-addon-api                    7.1.1             npm
 node-gyp                          13.0.1            npm                    
 node-gyp                          8.4.1             npm                    
 node-gyp-build                    4.8.4             npm                    
-nodejs-current                    26.3.1-r0         apk                    
+nodejs-current                    26.5.1-r0         apk                    
 nopt                              10.0.1            npm                    
 nopt                              5.0.0             npm                    
 normalize-path                    3.0.0             npm                    
