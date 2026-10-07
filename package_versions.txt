@@ -515,7 +515,7 @@ ncurses-terminfo-base             6.6_p20260516-r0  apk
 negotiator                        0.6.3             npm                    
 negotiator                        0.6.4             npm                    
 netcat-openbsd                    1.234.1-r0        apk                    
-nghttp2-libs                      1.69.0-r0         apk                    
+nghttp2-libs                      1.70.0-r0         apk                    
 node-abi                          3.94.0            npm                    
 node-addon-api                    7.1.1             npm                    
 node-gyp                          13.0.1            npm                    
